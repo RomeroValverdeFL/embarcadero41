@@ -63,6 +63,6 @@ public class InitDB implements CommandLineRunner{
         manager.addAuthority("ACCESS_REST1");
         
         List<Usuario> usuarios = Arrays.asList(juan, admin, manager);        
-        this.usuarioRepository.saveAll(usuarios);*/	
+        this.usuarioRepository.saveAll(usuarios);*/
 	}
 }
