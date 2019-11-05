@@ -29,11 +29,14 @@
 					<li class="nav-item active"><a class="nav-link" th:href="@{/}"><i class="fas fa-home"></i> Home
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link" th:href="@{/medico}">
-						<i class="fas fa-home"></i> Medico
+					<li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link" th:href="@{/plato}">
+						<i class="fas fa-home"></i> Platos
+					</a></li>
+					<li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link" th:href="@{/pedido}">
+						<i class="fas fa-home"></i> Pedidos
 					</a></li>
 					<li sec:authorize="hasRole('ROLE_CLIENTE')" class="nav-item"><a class="nav-link" th:href="@{/verid}">
-						<i class="fas fa-home"></i> Solicitar cita
+						<i class="fas fa-home"></i> Test
 					</a></li>
 					<li sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" class="nav-item"><a class="nav-link" th:href="@{/}">
 						<i class="fas fa-home"></i> Gestionar cita

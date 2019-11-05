@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: head"></head>
+<meta charset="UTF-8"/>
+<meta charset="UTF-8"/>
 <body>
 	<header th:replace="layout/layout :: header"></header>
 
 	<div class="container">
 
-		<h1>Información de Médico</h1>
+		<h1>InformaciÃ³n de MÃ©dico</h1>
 
 		<div class="card text-center">
-			<div class="card-header">Información de Medico</div>
+			<div class="card-header">InformaciÃ³n de Medico</div>
 			<div class="card-body">
 				
 				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
@@ -51,7 +53,7 @@
 							<th scope="col">#</th>
 							<th scope="col">Nombre</th>
 							<th scope="col">Fecha nac.</th>
-							<th scope="col">Dirección</th>
+							<th scope="col">DirecciÃ³n</th>
 							<th scope="col">telefono</th>
 							<th scope="col"></th>
 						</tr>

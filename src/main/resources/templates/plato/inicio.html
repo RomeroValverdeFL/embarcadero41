@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<meta charset="UTF-8"/>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1>Lista de Platos</h1>
+
+		<div class="card text-center">
+			<div class="card-header">Lista de Platos</div>
+			<div class="card-body">
+				
+				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
+  					<span th:text="${dangerDel}"></span>
+				</div>
+			
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nombre</th>							
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody th:each="plato: ${platos}">
+						<tr>
+							<th scope="row" th:text="${plato.codigoPlato}">1</th>
+							<td th:text="${plato.nombrePlato}">Mark</td>
+							
+							<td>
+								<a th:href="@{ '/plato/info/' + ${plato.codigoPlato} }" class="btn btn-info"> 
+									<i class="fas fa-info"></i> 
+								</a>
+								<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{ '/plato/edit/' + ${plato.codigoPlato} }" class="btn btn-warning"> 
+									<i class="fas fa-edit"></i> 
+								</a>
+								<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{ '/plato/del/' + ${plato.codigoPlato} }" class="btn btn-danger"> 
+									<i class="fas fa-trash-alt"></i> 
+								</a>							
+							</td>
+						</tr>						
+					</tbody>
+				</table>
+
+			</div>
+			<div sec:authorize="hasRole('ROLE_ADMIN')" class="card-footer text-muted">
+				<a th:href="@{/plato/nuevo}" class="btn btn-primary"><i class="fas fa-file-alt"></i> Nuevo Plato</a>
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
+
+
+
+
+
+
+
+

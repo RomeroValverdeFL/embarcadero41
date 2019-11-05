@@ -40,7 +40,15 @@ public class Usuario {
     
     @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER, cascade = CascadeType.ALL)    
     private List<Authority> authorities;
+    
+    @OneToMany(mappedBy = "usuarioP", fetch = FetchType.LAZY)
+	private List<Pedido> pedidos;
 
+    public void addPedido(Pedido pedido) {
+		pedido.setUsuarioP(this);
+		this.pedidos.add(pedido);
+	}
+    
 	public Usuario() {
 		this.enable = true;
 		this.authorities = new ArrayList<>();
@@ -50,6 +58,7 @@ public class Usuario {
 		this.password = password;
 		this.enable = true;
 		this.authorities = new ArrayList<>();
+		this.pedidos = new ArrayList<>();
 	}
 	
 	public void addAuthority( String _authority ) {
@@ -91,6 +100,30 @@ public class Usuario {
 		this.enable = enable;
 	}
 
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public String getNombres() {
+		return nombres;
+	}
+
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+
 	public List<Authority> getAuthorities() {
 		return authorities;
 	}
@@ -98,26 +131,17 @@ public class Usuario {
 	public void setAuthorities(List<Authority> authorities) {
 		this.authorities = authorities;
 	}
-	public String getApellidos() {
-		return apellidos;
-	}
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-	public String getNombres() {
-		return nombres;
-	}
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
-	}
-	public String getCargo() {
-		return cargo;
-	}
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
 	}
 
-	
-    
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+
+
+	    
     
 }
