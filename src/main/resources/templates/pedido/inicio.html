@@ -2,16 +2,15 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org" 
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="layout/layout :: head"></head>
-<meta charset="UTF-8"/>
 <body>
 	<header th:replace="layout/layout :: header"></header>
 
 	<div class="container">
 
-		<h1>Lista de Platos</h1>
+		<h1>Lista de medico</h1>
 
 		<div class="card text-center">
-			<div class="card-header">Lista de Platos</div>
+			<div class="card-header">Lista de medicos</div>
 			<div class="card-body">
 				
 				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
@@ -22,23 +21,28 @@
 					<thead>
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">Nombre</th>							
+							<th scope="col">Nombre</th>
+							<th scope="col">Especialidad</th>
+							<th scope="col">Dirección</th>
+							<th scope="col">telefono</th>
 							<th scope="col"></th>
 						</tr>
 					</thead>
-					<tbody th:each="plato: ${platos}">
+					<tbody th:each="medico: ${medicos}">
 						<tr>
-							<th scope="row" th:text="${plato.codigoPlato}">1</th>
-							<td th:text="${plato.nombrePlato}">Mark</td>
-							
+							<th scope="row" th:text="${medico.id}">1</th>
+							<td th:text="${medico.nombre}">Mark</td>
+							<td th:text="${medico.especialidad.nombre}">Otto</td>
+							<td th:text="${medico.direccion}">@mdo</td>
+							<td th:text="${medico.telefono}">@mdo</td>
 							<td>
-								<a th:href="@{ '/plato/info/' + ${plato.codigoPlato} }" class="btn btn-info"> 
+								<a th:href="@{ '/medico/info/' + ${medico.id} }" class="btn btn-info"> 
 									<i class="fas fa-info"></i> 
 								</a>
-								<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{ '/plato/edit/' + ${plato.codigoPlato} }" class="btn btn-warning"> 
+								<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{ '/medico/edit/' + ${medico.id} }" class="btn btn-warning"> 
 									<i class="fas fa-edit"></i> 
 								</a>
-								<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{ '/plato/del/' + ${plato.codigoPlato} }" class="btn btn-danger"> 
+								<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{ '/medico/del/' + ${medico.id} }" class="btn btn-danger"> 
 									<i class="fas fa-trash-alt"></i> 
 								</a>							
 							</td>
@@ -48,7 +52,7 @@
 
 			</div>
 			<div sec:authorize="hasRole('ROLE_ADMIN')" class="card-footer text-muted">
-				<a th:href="@{/plato/nuevo}" class="btn btn-primary"><i class="fas fa-file-alt"></i> Nuevo Plato</a>
+				<a th:href="@{/medico/nuevo}" class="btn btn-primary"><i class="fas fa-file-alt"></i> Nuevo Medico</a>
 			</div>
 		</div>
 
